@@ -1,84 +1,84 @@
 ## 💡 URI, URL, URN 
     - URI(Uniform Resource Identifier)
-		- Uniform : 리소스 식별하는 통일된 방식
-		- Resource : 자원, URI로 식별할 수 있는 모든 것(제한 X)
-		- Identifier : 다른 항목과 구분하는데 필요한 정보
-		
-	    a. 자원 자체를 식별할 수 있는 방법 			
-		b. 로케이터(Iocator) + 이름(name) 또는 둘다 추가로 분류될 수 있다.
-		c. URI 안에 URL(Resource Locator = 리소스 위치), URN(Resource Name = 리소스 이름) 존재
-		
-	        * URL : Uniform Resource Locator(리소스 위치)
-		        e.g : foo://example.com:8042/over/there?name=ferret#nose 
-			
-	        * URN : Uniform Resource Name(리소스 이름, 거의 사용 X)
-	    	    e.g : urn:example:animal:ferret:nose
-				e.g : urn:isbn:8960777331(어떤 책의 isbn URN)
-			        - URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음
-		
-		* 위치는 변할 수 있지만, 이름은 변하지 않는다.
-		   	
-	- URL 분석
-		e.g : https://www.google.com/search?q=hello&hl=ko
-			- scheme://[userinfo@]host:[:port][/path][?query][#fragment]
-				* scheme에 프로토콜(https) 사용 
-					- 프로토콜 : 어떤 방식으로 자원에 접근할 것인가 하는 약속 규칙(http, https, ftp etc..)
-					- http : 80, https : 443 , 포트는 생략 가능
-					- https는 http에 보안 추가 (HTTP Secure)
-					
-				* userinfo : URL에 사용자 정보를 포함해서 인증, 거의 사용 X
-				* 호스트명(www.google.com)
-					- 도메인명, IP주소 직접 사용 가능
-				* 포트번호(443)
-					- 접속 포트 
-				* 패스(/search)
-					- 리소스 경로(path), 계층적 구조
-						e.g /home/file1.jpg, /members, /members/100, /items/iphone10
+        - Uniform : 리소스 식별하는 통일된 방식
+        - Resource : 자원, URI로 식별할 수 있는 모든 것(제한 X)
+        - Identifier : 다른 항목과 구분하는데 필요한 정보
+        
+        a. 자원 자체를 식별할 수 있는 방법             
+        b. 로케이터(Iocator) + 이름(name) 또는 둘다 추가로 분류될 수 있다.
+        c. URI 안에 URL(Resource Locator = 리소스 위치), URN(Resource Name = 리소스 이름) 존재
+        
+            * URL : Uniform Resource Locator(리소스 위치)
+                e.g : foo://example.com:8042/over/there?name=ferret#nose 
+            
+            * URN : Uniform Resource Name(리소스 이름, 거의 사용 X)
+                e.g : urn:example:animal:ferret:nose
+                e.g : urn:isbn:8960777331(어떤 책의 isbn URN)
+                    - URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음
+        
+        * 위치는 변할 수 있지만, 이름은 변하지 않는다.
+               
+    - URL 분석
+        e.g : https://www.google.com/search?q=hello&hl=ko
+            - scheme://[userinfo@]host:[:port][/path][?query][#fragment]
+                * scheme에 프로토콜(https) 사용 
+                    - 프로토콜 : 어떤 방식으로 자원에 접근할 것인가 하는 약속 규칙(http, https, ftp etc..)
+                    - http : 80, https : 443 , 포트는 생략 가능
+                    - https는 http에 보안 추가 (HTTP Secure)
+                    
+                * userinfo : URL에 사용자 정보를 포함해서 인증, 거의 사용 X
+                * 호스트명(www.google.com)
+                    - 도메인명, IP주소 직접 사용 가능
+                * 포트번호(443)
+                    - 접속 포트 
+                * 패스(/search)
+                    - 리소스 경로(path), 계층적 구조
+                        e.g /home/file1.jpg, /members, /members/100, /items/iphone10
 
-				* 쿼리 파라미터(q=hello&hl=ko)	
-					- key = value 형태
-					- ?로 시작, &로 추가 가능 
-						e.g ?keyA=valueA=keyB=valueB
-				 
-					즉, query parameter, query string 등으로 부르며 웹 서버에 제공하는 파라미터, 문자 형태
-					
-				* fragment
-					e.g : https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-introducing-spring-boot
-						- 여기서 fragment는 getting-started-introducing-spring-boot을 뜻함
-						- html 내부 북마크 등에 사용, 서버에 전송하는 정보 아님								
-			
+                * 쿼리 파라미터(q=hello&hl=ko)    
+                    - key = value 형태
+                    - ?로 시작, &로 추가 가능 
+                        e.g ?keyA=valueA=keyB=valueB
+                 
+                    즉, query parameter, query string 등으로 부르며 웹 서버에 제공하는 파라미터, 문자 형태
+                    
+                * fragment
+                    e.g : https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-introducing-spring-boot
+                        - 여기서 fragment는 getting-started-introducing-spring-boot을 뜻함
+                        - html 내부 북마크 등에 사용, 서버에 전송하는 정보 아님                                
+            
 ## 💡 웹 브라우저 요청 흐름
     e.g : https://www.google.com:443/search?q=hello&hl=ko 
-	    a. 웹 브라우저(100.100.100.1) 가 구글 서버(200.200.200.2)를 찾기 위해 DNS 조회(200.200.200.2)
-		b. 구글 서버 IP(200.200.200.2) 와 PORT(443) 정보를 찾은 후 HTTP 요청 메세지 생성
-	    	* HTTP 요청 메세지
-	    	    - GET/search?q=hello&hl=ko HTTP/1.1 Host: www.google.com
+        a. 웹 브라우저(100.100.100.1) 가 구글 서버(200.200.200.2)를 찾기 위해 DNS 조회(200.200.200.2)
+        b. 구글 서버 IP(200.200.200.2) 와 PORT(443) 정보를 찾은 후 HTTP 요청 메세지 생성
+            * HTTP 요청 메세지
+                - GET/search?q=hello&hl=ko HTTP/1.1 Host: www.google.com
 
-			* HTTP 메세지 전송
-				a. 웹 브라우저가 HTTP 메세지 생성
-				b. SOCKET 라이브러리를 통해 OS TCP/IP 계층에 전달
-					- A : TCP/IP 연결(IP, PORT 찾은 정보로 TCP 3 way handshake(가상연결))
-					- B : 데이터 전달				
-				c. TCP/IP 패킷 생성, HTTP 메세지 포함
+            * HTTP 메세지 전송
+                a. 웹 브라우저가 HTTP 메세지 생성
+                b. SOCKET 라이브러리를 통해 OS TCP/IP 계층에 전달
+                    - A : TCP/IP 연결(IP, PORT 찾은 정보로 TCP 3 way handshake(가상연결))
+                    - B : 데이터 전달                
+                c. TCP/IP 패킷 생성, HTTP 메세지 포함
 
-			* 패킷 생성
-				- 출발지 IP, PORT / 목적지 IP, PORT / 전송 데이터(HTTP 메세지)
-				* 전송 데이터(HTTP 메세지)
-					- GET/search?q=hello&hl=ko HTTP/1.1 Host: www.google.com
-				
-		c. 웹 브라우저(100.100.100.1) 에서 요청 패킷을 구글 서버(200.200.200.2)로 전달
-		d. 구글 서버(200.200.200.2)로부터 요청 패킷 전달 후, TCP/IP패킷은 버리고 HTTP 메세지를 해석
-		e. 구글 서버(200.200.200.2) 에서 HTTP 응답 메세지 생성
-		
-			* HTTP 응답 메세지
-			    - HTTP/1.1 200 OK
-				- content-Type:text/html;charset=UTF-8
-				- Content-Length: 3423
-				
-				<html>
-				    <body> ... </body>
-				</html>
-		
-		f. 구글 서버(200.200.200.2) 응답 패킷을 웹 브라우저(100.100.100.1)에게 전달
-		g. 응답 패킷을 전달 받은 웹 브라우저(100.100.100.1)가 TCP/IP패킷은 버리고 HTTP 메세지를 해석
-			- HTTP 응답 메세지를 본 후 웹 브라우저 HTML 렌더링(HTML 결과를 봄)
+            * 패킷 생성
+                - 출발지 IP, PORT / 목적지 IP, PORT / 전송 데이터(HTTP 메세지)
+                * 전송 데이터(HTTP 메세지)
+                    - GET/search?q=hello&hl=ko HTTP/1.1 Host: www.google.com
+                
+        c. 웹 브라우저(100.100.100.1) 에서 요청 패킷을 구글 서버(200.200.200.2)로 전달
+        d. 구글 서버(200.200.200.2)로부터 요청 패킷 전달 후, TCP/IP패킷은 버리고 HTTP 메세지를 해석
+        e. 구글 서버(200.200.200.2) 에서 HTTP 응답 메세지 생성
+        
+            * HTTP 응답 메세지
+                - HTTP/1.1 200 OK
+                - content-Type:text/html;charset=UTF-8
+                - Content-Length: 3423
+                
+                <html>
+                    <body> ... </body>
+                </html>
+        
+        f. 구글 서버(200.200.200.2) 응답 패킷을 웹 브라우저(100.100.100.1)에게 전달
+        g. 응답 패킷을 전달 받은 웹 브라우저(100.100.100.1)가 TCP/IP패킷은 버리고 HTTP 메세지를 해석
+            - HTTP 응답 메세지를 본 후 웹 브라우저 HTML 렌더링(HTML 결과를 봄)
