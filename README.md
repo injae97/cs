@@ -5,7 +5,7 @@
 | 1   | [Internet Network](https://github.com/injae97/cs/blob/main/Internet%20Network.txt) |  
 | 2   | [URI, URL, URN](https://github.com/injae97/cs/blob/main/URI%2C%20URL%2C%20URN.txt) |  
 | 3   | [HTTP Basic](https://github.com/injae97/cs/blob/main/HTTP%20Basic.txt) |  
-| 4   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
+| 4   | [HTTP Method](https://github.com/injae97/cs/blob/main/HTTP%20Method.txt) |  
 | 5   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
 | 6   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
 | 7   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
