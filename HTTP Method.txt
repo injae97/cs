@@ -45,10 +45,15 @@
                     c. 리소스는 명사, 행위는 동사(미네랄 제외)
                     d. 행위(메서드)는 어떻게 구분?
 
+
+
 ## 💡 HTTP Method
-    HTTP 메서드 - GET, POST, 13 : 05
+    HTTP 메서드 - GET, POST, 13 : 05 볼차례 
 
     
     b. GET, POST
     c. PUT, PATCH, DELETE 
     d. Property
+	
+	
+## 💡 HTTP Method Property
