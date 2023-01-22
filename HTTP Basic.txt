@@ -146,4 +146,87 @@
 		e.g 보통 이벤트 설계 할 땐?
 			- 첫번째 페이지는 로그인도 필요 없는 정적 HTML 페이지 > 이벤트 참여 버튼 누르게 함
 							
-## 💡 HTTP 메세지 
+## 💡 HTTP 메세지 구조
+	a. HTTP 요청 메세지 
+	    a. start-line 시작 라인 (요청 메세지)
+		GET /search?q=hello&hl=ko HTTP/1.1 (start-line 시작 라인)
+		Host: www.google.com (header 헤더)
+		(empty line 공백 (CRLF(엔터)))
+		(message body)
+		* 요청 메세지도 body 본문을 가질 수 있음
+		
+		b. header 헤더
+		e.g HTTP 요청 메세지
+			GET /search?q=hello&hl=ko HTTP/1.1 (start-line 시작 라인)
+			Host: www.google.com (header 헤더) 
+
+		c. empty line 공백 라인(CRLF(엔터)) - 필수 
+		d. [message body] - 생략 가능
+			
+			a. start-line = request-line
+			b. request-line = method SP(공백) request-target SP HTTP-version CRLF(엔터)				
+			c. HTTP 메서드 (GET, POST, PUT, DELETE)
+				- 서버가 수행해야 할 동작 지정
+					a. GET : 리소스 조회(요청)
+					b. POST : 요청 내역 처리
+					c. PUT :  
+					d. DELETE : 삭제 해달라는 의미  
+					
+			d. 요청 대상
+			    e.g /search?q=hello&hl=ko
+					- absolute-path[?query](절대경로[?쿼리])
+					- 절대경로= "/" 로 시작하는 경로
+					* 참고 : *, http://...?x=y와 같이 다른 유형의 경로지정 방법도 존재
+					
+			e. HTTP Version
+			    e.g HTTP/1.1
+
+	b. HTTP 응답 메세지 
+		a. start-line 시작 라인 (응답 메세지)
+		HTTP/1.1 200 OK (start-line 시작 라인)
+		Content-Type: text/html;charset=UTF-8 (header 헤더)
+		Content-Length: 3423  
+		
+		(empty line 공백 (CRLF(엔터)))
+		
+		<html> (message body)
+			<body>...</body>
+		</html>
+		
+			a. start-line = status-line
+			b. status-line = HTTP-version SP(공백) status-code SP reason-phrase CRLF(엔터)
+			c. HTTP version
+			d. HTTP 상태 코드
+				a. 200 : 성공
+				b. 400 : 클라이언트 요청 오류
+				c. 500 : 서버 내부 오류
+				
+			* 이유 문구 : 사람이 이해할 수 있는 짧은 상태 코드 설명 글 
+			
+		b. header 헤더
+			a. header-field = field-name ":" OWS field-value OWS (OWS:띄어쓰기 허용)
+			b. field-name은 대소문자 구문 없음
+			c. HTTP 전송에 필요한 모든 부가 정보
+				e.g 메세지 바디의 내용, 메세지 바디의 크기, 압축, 인증, 요청 클라이언트(브라우저-Chrome) 정보, 서버 애플리케이션 정보, 캐시 관리 정보
+			
+			d. 표준 헤더가 너무 많음
+			e. 필요시 임의의 헤더 추가 가능
+				e.g : hellowolrd : hi 
+				
+			e.g HTTP 응답 메세지
+				HTTP/1.1 200 OK (start-line 시작 라인)
+				Content-Type: text/html;charset=UTF-8 (header 헤더) <<
+				Content-Length: 3423  
+			
+				(empty line 공백 (CRLF(엔터)))
+			
+				<html> (message body)
+					<body>...</body>
+				</html>
+				
+		c. HTTP 메세지 바디
+			a. 실제 전송할 데이터
+			b. HTML 문서, 이미지 영상, JSON 등등 byte로 표현할 수 있는 모든 데이터 전송 가능
+			
+	* HTTP는 단순하며 HTTP 메세지도 매우 단순
+	* 크게 성공하는 표준 기술은 단순하지만 확장 가능한 기술
