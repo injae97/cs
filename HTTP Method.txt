@@ -49,11 +49,9 @@
 
 ## 💡 HTTP Method
     HTTP 메서드 - GET, POST, 13 : 05 볼차례 
-
     
     b. GET, POST
     c. PUT, PATCH, DELETE 
     d. Property
-	
 	
 ## 💡 HTTP Method Property
