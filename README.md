@@ -7,7 +7,7 @@
 | 3   | [HTTP Basic](https://github.com/injae97/cs/blob/main/HTTP%20Basic.txt) |  
 | 4   | [HTTP Method](https://github.com/injae97/cs/blob/main/HTTP%20Method.txt) |  
 | 5   | [HTTP Method Utilize](https://github.com/injae97/cs/blob/main/HTTP%20Method%20Utilize.txt) |  
-| 6   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
+| 6   | [HTTP Status Code](https://github.com/injae97/cs/blob/main/HTTP%20Status%20Code.txt) |  
 | 7   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
 | 8   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
 | 9   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
