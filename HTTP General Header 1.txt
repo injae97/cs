@@ -21,7 +21,7 @@
             e.g helloworld: hi
     
     * HTTP 헤더 분류 - RFC2616(과거)
-        a. General 헤더: 메세지 전체에 적용되는 정보 
+        a. General 헤더: 메세지 전체에 적용되는 정보
             - e.g Connection: close
         b. Request 헤더: 요청 정보 
             - e.g User-Agent: Mozilla/5.0(Macintosh; ..)
