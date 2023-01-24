@@ -3,8 +3,8 @@
     
     a. 1xx(Informational): 요청이 수신되어 처리중
         - 거의 사용 X
-    b. 2xx(Successful): 요청 정상 처리
-    c. 3xx(Redirection): 요청을 완료하려면 추가 행동이 필요
+    b. 2xx - 성공(Successful): 요청 정상 처리
+    c. 3xx - 리다이렉션(Redirection): 요청을 완료하려면 추가 행동이 필요
     d. 4xx(Client Error): 클라이언트 오류, 잘못된 문법등으로 서버가 요청을 수행할 수 없음
     e. 5xx(Server Error): 서버 오류, 서버가 정상 요청을 처리하지 못함
     
@@ -79,8 +79,118 @@
             - save 버튼을 눌러도 같은 화면을 유지해야 한다.
             - 결과 내용이 없어도 204 메세지(2xx)만으로 성공을 인식할 수 있다.
             
-## 💡 3xx
+## 💡 3xx - 리다이렉션(Redirection)
+    - 요청을 완료하기 위해 유저 에이전트의 추가 조치 필요
+        * 유저 에이전트 : 웹 브라우저
 
+    * 리다이렉션 이해
+        - 웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동(리다이렉트)
+        
+        e.g 이벤트 페이지(자동 리다이렉트 흐름)
+            * /event를 안쓰고 /new-event를 쓰기로 함
+            
+        1. 요청
+        GET /event HTTP/1.1
+        Host: localhost:8080
+        
+        2. 응답
+        HTTP/1.1 301 Moved Permanently
+        Location: /new-event
+        
+        3. 자동 리다이렉트
+        URL: /event -> URL: /new-event
+        
+        4. 요청 
+        GET /new-event HTTP/1.1
+        Host: localhost:8080
+        
+        5. 응답
+        HTTP/1.1 200 OK
+        ...
+        
+    * 리다이렉션 종류
+        a. 영구 리다이렉션 - 특정 리소스의 URI가 영구적으로 이동
+            e.g /members -> /users
+            e.g /event -> /new-event
+        
+        b. 일시 리다이렉션 - 일시적인 변경
+            - 주문 완료 후 주문 내역 화면으로 이동
+                * PRG: Post/Redirect/Get
+        
+        c. 특수 리다이렉션
+            - 결과 대신 캐시를 사용
+        
+    a. 300 Multiple Choices
+        - 거의 사용 X
+        
+    b. 301 Moved Permanently
+        - 영구 리다이렉션(리소스의 URI가 영구적으로 이동)
+        - 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
+        - 리다이렉트시 요청 메서드가 GET으로 변하고(처음 POST를 보내면 GET으로 변경), 본문이 제거될 수 있음(MAY)
+
+        e.g 301 - 영구 리다이렉션         
+            1. 요청
+            POST /event HTTP/1.1
+            Host: localhost:8080
+            
+            name=hello&age=20(메세지 존재)
+            
+            2. 응답
+            HTTP/1.1 301 Moved Permanently
+            Location: /new-event
+            
+            3. 자동 리다이렉트(POST -> GET으로 변경)
+            
+            4. 요청 - 메세지 제거(name=hello&age=20)
+            GET /new-event HTTP/1.1
+            Host: localhost:8080
+            
+            * 새로운 이벤트 페이지에서 입력해야하는 Form, 또는 화면이 나옴
+                        
+            5. 응답
+            HTTP/1.1 200 OK
+            ...
+    
+    c. 302 Found
+    
+    
+    d. 303 See Other
+    
+    
+    e. 304 Not Modified
+    
+    
+    f. 307 Temporary Redirect
+    
+    
+    g. 308 Permanent Redirect
+        - 영구 리다이렉션(리소스의 URI가 영구적으로 이동)
+        - 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
+        - 301(Moved Permanently)과 기능은 같음, 리다이렉트시 요청 메서드와 본문 유지(처음 POST를 보내면 리다이렉트도 POST)
+
+        e.g 308 - 영구 리다이렉션         
+            1. 요청
+            POST /event HTTP/1.1
+            Host: localhost:8080
+            
+            name=hello&age=20(메세지 존재)
+            
+            2. 응답
+            HTTP/1.1 308 Permanent Redirect
+            Location: /new-event
+            
+            3. 자동 리다이렉트(POST -> POST 유지)
+            
+            4. 요청
+            GET /new-event HTTP/1.1
+            Host: localhost:8080
+            
+            name=hello&age=20(메세지 유지) 
+                        
+            5. 응답
+            HTTP/1.1 200 OK
+            ...    
+            
 ## 💡 4xx 
 
 ## 💡 5xx 
