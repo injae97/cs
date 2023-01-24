@@ -10,4 +10,3 @@
 | 6   | [HTTP Status Code](https://github.com/injae97/cs/blob/main/HTTP%20Status%20Code.txt) |  
 | 7   | [HTTP General Header 1](https://github.com/injae97/cs/blob/main/HTTP%20General%20Header%201.txt) |  
 | 8   | [HTTP General Header 2](https://github.com/injae97/cs/blob/main/HTTP%20General%20Header%202.txt) |  
-| 9   | [???????](https://github.com/injae97/cs/blob/main/?????????.txt) |  
