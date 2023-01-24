@@ -165,12 +165,18 @@
             
             a. start-line = request-line
             b. request-line = method SP(공백) request-target SP HTTP-version CRLF(엔터)                
-            c. HTTP 메서드 (GET, POST, PUT, DELETE)
+            c. HTTP 메서드 (GET, POST, PUT, PATCH, DELETE)
                 - 서버가 수행해야 할 동작 지정
-                    a. GET : 리소스 조회(요청)
-                    b. POST : 요청 내역 처리
-                    c. PUT :  
-                    d. DELETE : 삭제 해달라는 의미  
+					a. GET
+						- 리소스 조회
+					b. POST
+						- 요청 데이터 처리, 주로 등록에 사용 
+					c. PUT 
+						- 리소스를 대체, 해당 리소스가 없으면 생성
+					d. PATCH 
+						- 리소스 부분 변경
+					e. DELETE
+						- 리소스 삭제
                     
             d. 요청 대상
                 e.g /search?q=hello&hl=ko
