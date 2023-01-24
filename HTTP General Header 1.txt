@@ -28,7 +28,7 @@
         c. Response 헤더: 응답 정보 
             - e.g Server: Apache
         d. Entity 헤더: 엔티티 바디 정보
-            - e.g Content-Type: text/html, Content-Length: 3423 
+            - e.g Content-Type: text/html, Content-Length: 3423
                 
         e.g 
         POST / HTTP/1.1
