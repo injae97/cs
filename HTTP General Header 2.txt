@@ -209,7 +209,7 @@
         - 매우 실용적인 해결책
         
 ## 💡 검증 헤더와 조건부 요청 2
-    a. 검증 헤더
+    a. 검증 헤더(Validator)
         - 캐시 데이터와 서버 데이터가 같은지 검증하는 데이터
             e.g Last-Modified, ETag
             
@@ -289,10 +289,12 @@
                 4. 브라우저 캐시 -> 웹 브라우저 
                     - 브라우저 캐시: ETag "aaaaaaaaaaaaaa" (캐시에서 조회)
                 
+                * Last-Modified: Thu, 04 Jun 2020 07:19:24 GMT
+                
     b. 조건부 요청 헤더
         - 검증 헤더로 조건에 따른 분기
-            e.g if-modified-since: Last-Modified 사용
-                * if-modified-since: 이후에 데이터가 수정되었으면?
+            e.g If-Modified-since, If-Unmodified-since: Last-Modified 값 사용
+                * If-Modified-since: 이후에 데이터가 수정되었으면?
                     a. 데이터 미변경 예시
                         - 캐시: 2020-11-10T10:00:00+00:00 vs 서버: 2020-11-10T10:00:00+00:00 
                         - 304 Not Modified, 헤더 데이터만 전송(HTTP Body 미포함)
@@ -303,7 +305,7 @@
                         - 200 OK, 모든 데이터 전송(HTTP Body 포함)
                             - 전송 용량 1.1M(헤더 0.1M, 바디 1.0M)
                     
-                    * Last-Modified, if-modified-since 단점
+                    * Last-Modified, If-modified-since 단점
                         - 1초 미만(0.1 ~ 0.9초) 단위로 캐시 조정이 불가능
                         - 날짜 기반의 로직 사용
                         - 데이터를 수정해서 날짜가 다르지만 같은 데이터를 수정해서 데이터 결과가 똑같은 경우(a -> b, b-> a 파일 이름 변경했어도 다운)
@@ -311,9 +313,10 @@
                             e.g 스페이스나 주석처럼 크게 영향이 없는 변경에서 캐시를 유지하고 싶은 경우
                                 - ETag 사용
                                         
-            e.g if-None_Match: ETag 사용
+            e.g If-Match, If-None-Match: ETag 값 사용
                 - 조건이 만족하면 200 OK
                 - 조건이 만족하지 않으면 304 Not Modified
+        
     
     * 정리 
         - 진짜 단순하게 ETag만 서버에 보내서 같으면 유지, 다르면 다시 받기!
@@ -324,6 +327,24 @@
             - 애플리케이션 배포 주기에 맞추어 ETag 모두 갱신
             
 ## 💡 캐시와 조건부 요청 헤더
+    a. Cache-Control: 캐시 제어(캐시 지시어(directives))
+        - Cache-Control: max-age
+            - 캐시 유효 시간, 초 단위
+        - Cache-Control: no-cache
+            - 데이터는 캐시해도 되지만, 항상 윈(origin) 서버에 검증하고 사용
+        - Cache-Control: no-store
+            - 데이터에 민감한 정보가 있으므로 저장하면 안됨(메모리에서 사용하고 최대한 빨리 삭제)
+            
+    b. Pragma: 캐시 제어(하위 호환)
+        - Pragma: no-cache
+        - HTTP 1.0 하위 호환        
+    
+    c. Expires: 캐시 유효 기간(하위 호환)
+        - 캐시 만료일을 정확한 날짜로 지정
+        - expires: Mon, 01 Jan 1990 00:00:00 GMT
+        - HTTP 1.0 부터 사용
+        - 지금은 더 유연한 Cache-Control: max-age 권장
+        - Cache-Control: max-age와 함께 사용하면 Expires는 무시
 
 ## 💡 프록시 캐시
 
