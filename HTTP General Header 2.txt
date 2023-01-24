@@ -366,3 +366,7 @@
                 - 오리진 서버에서 응답 후 프록시 캐시 내에 머문 시간(초)
 
 ## 💡 캐시 무효화
+    - Cache-Control: 확실한 캐시 무효화 응답
+	    e.g Cache-Control: no-cache, no-store, must-revalidate
+	- Pragma: no-cache
+	    - HTTP 1.0 하위 호환
