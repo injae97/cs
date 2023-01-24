@@ -262,5 +262,59 @@
     * 협상 헤더는 요청시에만 사용
     
 ## 💡 전송 방식
-    a. Transfer-Encoding
-    b. Range, Content-Range
+    a. 단순 전송(Content-Length)
+        - 한번에 요청하고, 한번에 쭉 받는 것
+        
+        e.g 클라이언트(GET /event) -> 서버 
+        HTTP/1.1 200 OK
+        Content-Type: text/html;charset-UTF-8
+        Content-Length: 3423
+        
+        <html>
+            <body>...</body>
+        </html>
+    
+    b. 압축 전송
+        - gzip으로 압축했기 때문에 길이가 확 줄어듬
+        
+        e.g 클라이언트(GET /event) -> 서버  
+        HTTP/1.1 200 OK
+        Content-Type: text/html;charset-UTF-8
+        Content-Encoding: gzip
+        Content-Length: 521
+        
+        lkj123kljoasdnmkasdnkjsadnquwnj215dsascnjoasdjnklasdk
+        
+    c. 분할 전송
+        - Transfer-Encoding: chunked 사용
+        - 네트워크가 5byte(Hello) 보내고, 5byte(World) 보내고, 0byte Enter 쳐서 보냄(분할)
+        * Content-Length를 넣어서 사용 X(예상을 못하기 때문에)
+        
+        e.g 클라이언트(GET /event) -> 서버  
+        HTTP/1.1 200 OK
+        Content-Type: text/plain
+        Transfer-Encoding: chunked
+        
+        5
+        Hello
+        5
+        World
+        0
+        \r\n
+            
+    d. 범위 전송(Range, Content-Range)
+        - 범위를 지정해서 데이터 전송(Range: bytes=1001-2000)
+        
+        e.g 클라이언트(/event) -> 서버
+            GET /event
+            Range: bytes=1001-2000
+            
+            서버
+            HTTP/1.1 200 OK
+            Content-Type: text/plain
+            Content-Range: bytes 1001-2000 / 2000
+            
+            qweqwe1l2iu3019qwdnjasdnjkawdnqwj213y
+            
+## 💡 일반 정보
+    - 
