@@ -24,7 +24,7 @@
                 * scheme에 프로토콜(https) 사용 
                     - 프로토콜 : 어떤 방식으로 자원에 접근할 것인가 하는 약속 규칙(http, https, ftp etc..)
                     - http : 80, https : 443 , 포트는 생략 가능
-                    - https는 http에 보안 추가 (HTTP Secure)
+                    - https는 http에 보안 추가(HTTP Secure)
                     
                 * userinfo : URL에 사용자 정보를 포함해서 인증, 거의 사용 X
                 * 호스트명(www.google.com)
